@@ -22,7 +22,7 @@ function user_info(subreddit, attribute) { return IMPORTUSER(subreddit, attribut
   for (var part of parts) {
     obj = obj[part];
   }
-  return obj;
+  return obj ?? "null";
 }
 
 /**
@@ -44,7 +44,7 @@ function IMPORTUSER(username, attribute) {
   for (var part of parts) {
     obj = obj[part];
   }
-  return obj;
+  return obj ?? "null";
 }
 
 /**
@@ -66,7 +66,7 @@ function IMPORTPOST(post_id, attribute) {
   for (var part of parts) {
     obj = obj[part];
   }
-  return obj;
+  return obj ?? "null";
 }
 
 /**
@@ -89,5 +89,5 @@ function IMPORTCOMMENT(post_id, comment_id, attribute) {
   for (var part of parts) {
     obj = obj[part];
   }
-  return obj;
+  return obj ?? "null";
 }
