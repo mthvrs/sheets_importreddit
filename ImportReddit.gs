@@ -48,6 +48,23 @@ function IMPORTUSER(username, attribute) {
 }
 
 /**
+ * Reddit — Returns TRUE if user is mod of subreddit
+ *
+ * @param {"spez"} username The user's name (eg. "spez")
+ * @param {"announcements"} subreddit The subreddit you'd like to check (eg. "announcements")
+ * @return {TRUE} The requested subreddit's moderator status for this user (eg. "TRUE")
+ * @customfunction
+ */
+function IMPORTUSER_ISMOD(username, subreddit) {
+  var url = "https://www.reddit.com/user/" + username + "/moderated_subreddits.json";
+  var params = {
+    'method' : 'GET',
+  };
+  var response = JSON.parse(UrlFetchApp.fetch(url).getContentText());
+  return !! response.data.find(d => d.display_name === subreddit);
+}
+
+/**
  * Reddit — Returns a given attribute's value for a post
  *
  * @param {"cq1q2"} post_id The post's id (eg. "cq1q2")
